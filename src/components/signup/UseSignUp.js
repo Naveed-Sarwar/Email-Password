@@ -10,16 +10,21 @@ const [loading,setLoading]=useState(false);
 const [name,setName]=useState("")
 const dispatch=useDispatch();
 const doSignUpUser = () =>{
-    const user={
-        email: email,
-        password: password,
-        country: country,
-        name: name,
-        phone: phone
+    const data={
+     email,
+     password,
+        country,
+        name,
+        phone
     }
-   console.log("value ",user);
-    dispatch(doSignUp(user,setLoading));
-  
+   
+    dispatch(doSignUp(data));
+    setEmail("")
+    setPassword("")
+    setPhone("")
+    setCountry("")
+    setName("")
+    
 }
 
 return [email,password,phone,country,name,setEmail,setPassword,doSignUpUser,setLoading,setName,setPhone,setCountry];
