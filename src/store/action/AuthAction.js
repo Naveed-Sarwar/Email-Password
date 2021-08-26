@@ -17,31 +17,24 @@ export const doLogin = (email, password) => async (dispatch) => {
 }
 
 
-export const doSignUp = (setLoading, user) => async (dispatch) => {
+export const doSignUp = ( data) => async (dispatch) => {
  
     try {
-        alert("naved")
-        console.log("user",user);
-        // setLoading(true)
-        const userCredential = await auth.createUserWithEmailAndPassword(user.email, user.password);
+        const userCredential = await auth.createUserWithEmailAndPassword(data.email, data.password);
         var userData = userCredential.user;
         alert("data",userData)
-            // await  db.collection("users").add({
-            //       ...user,
-            //        uid: userData.uid
-            //     });
+            await  db.collection("users").add({
+                ...data,
+                   uid: userData.uid
+            });
         dispatch({
             type: LOGIN,
             payload: userData,
         });
     } catch (error) {
         alert(JSON.stringify(error))
-        console.log("error",error);
-        // { error && <Alert varient="danger" >{error}</Alert>}
     }
-    finally{
-        // setLoading(false)
-    }
+    
 }
 
 // export const doLogout = () => async (dispatch) =>{
