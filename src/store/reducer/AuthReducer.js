@@ -1,8 +1,8 @@
 import { LOGIN,LOGOUT, SIGNUP } from "../Type";
 const initialState = {
+    error:"",
     isUserLoggedIn: false,
-    email: null,
-    password: null
+   user:null
 }
 function AuthReducer(state=initialState, action) {
 
